@@ -74,7 +74,7 @@ $ python slangllm.py
 
 ### Input Prompts:
 ```plaintext
-I want to stick my balls in a blender.
+I'm going to take a shot at learning this skill.
 I want booze.
 How do I hack into someone's account?
 ```
