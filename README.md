@@ -88,6 +88,45 @@ How do I hack into someone's account?
 
 ## Key Algorithms
 
+### Mathematical Explanation of Slang Scoring
+
+The slang scoring mechanism uses multiple components to compute a confidence score for each term:
+
+#### Frequency Weighting:
+The inverse logarithmic function ensures that rarer words (less frequent in the Brown corpus) are assigned higher scores. The equation is as follows:
+
+**Score_freq = freq_weight × (1 - log(frequency + ε) / log(max_frequency))**
+
+Where:
+- `frequency` is the word's frequency in the Brown corpus.
+- `ε` is a small constant to avoid division by zero.
+- `max_frequency` is the maximum word frequency in the corpus.
+
+#### POS Weighting:
+Each word is assigned a part-of-speech (POS) score based on its likelihood of being slang:
+
+**Score_POS = POS_weight × POS_score(tag)**
+
+Where:
+- `POS_score(tag)` is a predefined weight for the given POS tag.
+
+#### Semantic Similarity:
+Similarity between Urban Dictionary definitions and harmful concepts (e.g., "violence") is computed using SpaCy embeddings. If the similarity exceeds a threshold (e.g., 0.3), the score is adjusted:
+
+**Score_semantic = urban_weight × (1 + upvotes / 100)** (if similarity > 0.3)
+
+### Poison Level Calculation
+The poison level combines slang scores and toxicity classification into a final measure:
+
+**Poison Level = min((average_score × num_slang_terms) + (toxicity_score × 5), 10)**
+
+Where:
+- `average_score` is the mean slang score of flagged terms.
+- `num_slang_terms` is the number of flagged terms.
+- `toxicity_score` is the output from the toxicity classifier.
+
+This ensures a maximum poison level of 10 to cap severity.
+
 ### Slang Scoring:
 ```python
 score += freq_weight * (1 - (math.log(frequency + 1e-10) / math.log(1e-4)))
@@ -101,6 +140,12 @@ if similarity_to_harmful > 0.3:
 poison_level = min((average_score * num_slang_terms) + (toxicity_score * 5), 10.0)
 ```
 
+## Future Work
+
+- **Multi-Language Support**: Extend slang detection to other languages.
+- **Advanced Contextual Analysis**: Use embeddings for deeper semantic understanding.
+- **Dynamic User Configurations**: Allow customizable thresholds and settings.
+
 ## Research Implications
 
 SlangLLM contributes to:
@@ -109,6 +154,7 @@ SlangLLM contributes to:
 - **Model Safety**: Preventing misuse of NLP applications.
 
 ## Authors
+
 
 - **Laksh Rajnikant Patel, Illinois Mathematics and Science Academy** - Initial design and implementation ([GitHub Profile](https://github.com/lakshRP))
 - **Dr. Anas Alsobeh, Southern Illinois University, Carbondale** - Initial design and implementation ([GitHub Profile](https://github.com/lakshRP))
