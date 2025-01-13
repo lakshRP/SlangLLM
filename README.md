@@ -156,8 +156,8 @@ SlangLLM contributes to:
 ## Authors
 
 
-- **Laksh Rajnikant Patel, Illinois Mathematics and Science Academy** - Initial design and implementation ([GitHub Profile](https://github.com/lakshRP))
-- **Dr. Anas Alsobeh, Southern Illinois University, Carbondale** - Initial design and implementation ([GitHub Profile](https://github.com/lakshRP))
+- **Laksh Rajnikant Patel, Illinois Mathematics and Science Academy** - Author and Developer ([GitHub Profile](https://github.com/lakshRP))
+- **Dr. Anas Alsobeh, Southern Illinois University, Carbondale** - Author and Developer ([GitHub Profile]((https://github.com/aalosbeh)))
 ## License
 
 This project is licensed under the MIT License. See the LICENSE file for details.
