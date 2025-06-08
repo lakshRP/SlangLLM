@@ -4,6 +4,9 @@
 
 SlangLLM is a research project that focuses on detecting and filtering slang dynamically in user-provided text prompts. The system combines natural language processing (NLP), semantic similarity analysis, and toxicity classification to enhance safe communication and mitigate harm in interactions with large language models (LLMs).
 
+## Impact
+SlangLLM was presented at the IEEE Conference on Secure and Trustworthy CyberInfrastructure for IoT and Microelectronics (SaTC 2025) to an audience of leading researchers, engineers, and practitioners. Recently, SlangLLM was accepted for publication in IEE Xplore. 
+
 ## Features
 
 - **Slang Detection**: Identifies slang terms using Urban Dictionary integration.
